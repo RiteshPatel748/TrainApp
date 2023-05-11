@@ -1,0 +1,8 @@
+{
+    "appId": "train-hefna",
+    "appUrl": "https://realm.mongodb.com/groups/643bf9efa7dea7783f5cc329/apps/643ccc01f7f014f33d61be67",
+    "baseUrl": "https://realm.mongodb.com",
+    "clientApiBaseUrl": "https://ap-south-1.aws.realm.mongodb.com",
+    "dataApiBaseUrl": "https://ap-south-1.aws.data.mongodb-api.com",
+    "dataSourceName": "mongodb-atlas"
+}
