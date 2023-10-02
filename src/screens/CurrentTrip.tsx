@@ -12,7 +12,7 @@ const CurrentTrip = () => {
   const [length,setLength]=useState(0)
   const route =useRoute();
   const getData =async()=>{
-  const url = `https://irctc1.p.rapidapi.com/api/v1/liveTrainStatus?trainNo=${route?.params?.trainNo}&startDay=0`;
+  const url = `https://irctc1.p.rapidapi.com/api/v1/liveTrainStatus?trainNo=${route?.params?.trainNo}&startDay=1`;
   try {
     const response = await fetch(url, options);
     const result = await response.json();
@@ -52,7 +52,7 @@ if(!livetrain?.data){
           <Text style={styles.history}>Train Status</Text>
         </View>
       </View>
-      <ScrollView style={styles.currentTripChild} >
+      {(livetrain?.data?.previous_stations ||livetrain?.data?.upcoming_stations)?<ScrollView style={styles.currentTripChild} >
       {livetrain?.data?.previous_stations?.map((data)=>{
         return(
           (data && <TrainLiveInfo 
@@ -61,11 +61,11 @@ if(!livetrain?.data){
             departedTime={data.etd}
       />)
       )})}
-          <TrainLiveInfo 
-            stationName={livetrain?.data?.current_station_name}
-            arrivedTime={livetrain?.data?.cur_stn_sta}
-            departedTime={livetrain?.data?.etd}
-         />
+      {livetrain?.data?.current_station_name&&<TrainLiveInfo 
+        stationName={livetrain?.data?.current_station_name}
+        arrivedTime={livetrain?.data?.cur_stn_sta}
+        departedTime={livetrain?.data?.etd}
+      />}
       {livetrain?.data?.upcoming_stations?.map((data)=>{
         return(
           (data && <TrainLiveInfo 
@@ -81,7 +81,7 @@ if(!livetrain?.data){
         resizeMode="cover"
         source={require("../assets/vector.png")}
       />
-      </ScrollView>
+      </ScrollView>:<Text style={{fontSize:22,fontWeight:'bold',textAlign:'center',marginTop:'100%',margin:20}}>{livetrain.data.new_message}</Text>}
     </View>
   );
 };

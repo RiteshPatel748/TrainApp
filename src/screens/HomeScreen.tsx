@@ -46,7 +46,7 @@ const HomeScreen = () => {
         </Text>
       </TouchableOpacity>
       <TouchableOpacity style={[styles.frameView, styles.frameViewPosition]}
-        onPress={() =>Alert.alert('Upcomming......')}>
+        onPress={() =>Alert.alert('Upcoming......')}>
         <Image
           style={styles.vectorIcon}
           resizeMode="cover"

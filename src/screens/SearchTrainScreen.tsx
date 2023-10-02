@@ -4,17 +4,13 @@ import {
   StyleSheet,
   TextInput,
   View,
-  Pressable,
   Text,
-  ScrollView,
   TouchableOpacity,
   Alert,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import PNRStatusContainer from "../components/PNRStatusContainer";
-import TrainInfo from "../components/TrainInfo";
 import { FontFamily, Padding, Color, Border, FontSize } from "../../GlobalStyles";
-import { options } from "../../scretKey";
 import { station_name } from "./object";
 import SearchableDropdown from 'react-native-searchable-dropdown';
 
@@ -25,12 +21,10 @@ const SearchTrainScreen = () => {
   const [toStationCode,setToStationCode]=useState("")
   const [trainNumber,setTrainNumber]=useState("")
   const navigation = useNavigation();
-  // jbp srid
+
   const onPress=()=>{
     if(fromStation=="From Station"){return(Alert.alert(`From Station is empty`))}
     if(toStation=="To Station"){return(Alert.alert(`to Station is empty`))}
-    // console.log(fromStation.toLowerCase());
-    // console.log(toStation.toLowerCase());
     navigation.navigate("TrainsScreen" ,{fromStation:fromStationCode.toLowerCase(),toStation:toStationCode.toLowerCase()})
   }
   const onPressNumber=()=>{
@@ -47,7 +41,6 @@ const SearchTrainScreen = () => {
       setToStationCode(fromStationCode)
       setFromStationCode(text2)
     }
-    console.log(toStationCode)
   }
 
   const [object ,setObject]=useState([])
@@ -58,13 +51,12 @@ const SearchTrainScreen = () => {
                 array.push(station_name.features[i].properties)
             }
             setObject([...array])
-            // console.log(toStationCode);
-            
     }
-    // console.log(object);
+
   useEffect(() => {
     call()
   }, []);
+
   return (
     <View style={[styles.searchTrainScreen, styles.frameInnerFlexBox]}>
       <PNRStatusContainer
@@ -80,14 +72,6 @@ const SearchTrainScreen = () => {
             resizeMode="cover"
             source={require("../assets/ellipse-16.png")}
           />
-          {/* <TextInput
-            style={[styles.madanMahalStation, styles.findTrainsFlexBox]}
-            value={fromStation}
-            placeholder="From Station"
-            keyboardType="default"
-            placeholderTextColor="#fff"
-            onChangeText={setFromStation}
-          /> */}
          <SearchableDropdown
           onTextChange={(text:any) => console.log(text)}
           onItemSelect={(item:any) =>{setFromStation(item.name);setFromStationCode(item.code)}}
@@ -143,14 +127,6 @@ const SearchTrainScreen = () => {
             resizeMode="cover"
             source={require("../assets/ellipse-161.png")}
           />
-          {/* <TextInput
-            style={[styles.madanMahalStation, styles.findTrainsFlexBox]}
-            value={toStation}
-            placeholder="To Station"
-            keyboardType="default"
-            placeholderTextColor="#fff"
-            onChangeText={setToStation}
-          /> */}
            <SearchableDropdown
           onTextChange={(text:any) => console.log(text)}
           onItemSelect={(item:any) =>{setToStation(item.name);setToStationCode(item.code)}}

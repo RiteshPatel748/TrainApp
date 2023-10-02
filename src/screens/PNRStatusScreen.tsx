@@ -12,8 +12,10 @@ import PNRStatusContainer from "../components/PNRStatusContainer";
 import { Padding, Color, Border, FontFamily } from "../../GlobalStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 const PNRStatusScreen = () => {
+  const navigation = useNavigation();
   const [pnr,setPnr]=useState('')
   return (
     <View style={[styles.pnrStatusScreen, styles.frameInnerFlexBox]}>
@@ -43,7 +45,7 @@ const PNRStatusScreen = () => {
         </View>
         <TouchableOpacity
           style={[styles.findTrainsWrapper, styles.vectorParentSpaceBlock]}
-          onPress={()=>Alert.alert('Not found')}
+          onPress={()=>{if(!pnr){return(Alert.alert(`PNR is empty`))} navigation.navigate("PNRScreen",{pnr:pnr});}}
         >
           <Text style={[styles.findTrains, styles.findTrainsFlexBox]}>
             Find PNR Status

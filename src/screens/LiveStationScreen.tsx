@@ -27,7 +27,7 @@ const LiveStationScreen = () => {
         trainPlatformName="Platform 1"
         trainDestination="Shridham"
         trainStatus="DEPARTED"
-        onFramePressablePress={() => Alert.alert('Upcomming......')}
+        onFramePressablePress={() => Alert.alert('Upcoming......')}
       />
         <TrainSection
           trainNumber="22188"
@@ -40,7 +40,7 @@ const LiveStationScreen = () => {
           trainDestination="Shridham"
           pMTop={550}
           trainStatus="DEPARTED"
-          onFramePressablePress={() => Alert.alert('Upcomming......')}
+          onFramePressablePress={() => Alert.alert('Upcoming......')}
         />
         <TrainSection
           trainNumber="22288"
@@ -55,7 +55,7 @@ const LiveStationScreen = () => {
           pMTop={250}
           frame102Color="#33b11e"
           propBackgroundColor="#33b11e"
-          onFramePressablePress={() => Alert.alert('Upcomming......')}
+          onFramePressablePress={() => Alert.alert('Upcoming......')}
         />
         <TrainSection
           trainNumber="22288"
@@ -70,7 +70,7 @@ const LiveStationScreen = () => {
           pMTop={400}
           frame102Color="#33b11e"
           propBackgroundColor="#33b11e"
-          onFramePressablePress={() => Alert.alert('Upcomming......')}
+          onFramePressablePress={() => Alert.alert('Upcoming......')}
         />
         <TrainSection
           trainNumber="22288"
@@ -85,7 +85,7 @@ const LiveStationScreen = () => {
           pMTop={550}
           frame102Color="#33b11e"
           propBackgroundColor="#33b11e"
-          onFramePressablePress={() => Alert.alert('Upcomming......')}
+          onFramePressablePress={() => Alert.alert('Upcoming......')}
         />
         <TrainSection
           trainNumber="22288"
@@ -100,7 +100,7 @@ const LiveStationScreen = () => {
           pMTop={700}
           frame102Color="#33b11e"
           propBackgroundColor="#33b11e"
-          onFramePressablePress={() => Alert.alert('Upcomming......')}
+          onFramePressablePress={() => Alert.alert('Upcoming......')}
         />
         <TrainSection
           trainNumber="22288"
@@ -115,7 +115,7 @@ const LiveStationScreen = () => {
           pMTop={850}
           frame102Color="#33b11e"
           propBackgroundColor="#33b11e"
-          onFramePressablePress={() => Alert.alert('Upcomming......')}
+          onFramePressablePress={() => Alert.alert('Upcoming......')}
         />
       </ScrollView>
       <View style={styles.stationParent}>

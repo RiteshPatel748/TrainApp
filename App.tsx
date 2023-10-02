@@ -14,6 +14,7 @@ import PNRStatusScreen from "./src/screens/PNRStatusScreen";
 import LiveStationScreen from "./src/screens/LiveStationScreen";
 import SearchTrainScreen from "./src/screens/SearchTrainScreen";
 import TestScreen from './src/screens/testscreen';
+import PNRScreen from './src/screens/PNRScreen';
 const {RealmProvider} = realmContext;
 
 const Stack = createStackNavigator();
@@ -43,33 +44,11 @@ const App = () => {
         sync={{
           flexible: true,
           onError: (_, error) => {
-            // Show sync errors in the console
             console.error(error);
           },
         }}
         fallback={LoadingIndicator}>
-       {/* <SafeAreaProvider> */}
         <SafeAreaProvider>
-          {/* <NavigationContainer>
-            <Stack.Navigator>
-              <Stack.Screen
-                name="Your To-Do List"
-                component={ItemListView}
-                options={{
-                  headerTitleAlign: 'center',
-                  headerLeft,
-                  headerRight,
-                }}
-              />
-            </Stack.Navigator>
-          </NavigationContainer>
-          <View style={styles.footer}>
-            <Text style={styles.footerText}>
-              Log in with the same account on another device or simulator to see
-              your list sync in real time
-            </Text>
-          </View>
-        </SafeAreaProvider> */}
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
@@ -85,6 +64,11 @@ const App = () => {
             <Stack.Screen
               name="PNRStatusScreen"
               component={PNRStatusScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="PNRScreen"
+              component={PNRScreen}
               options={{ headerShown: false }}
             />
             <Stack.Screen

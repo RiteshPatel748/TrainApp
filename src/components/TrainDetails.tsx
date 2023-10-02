@@ -22,7 +22,6 @@ const TrainDetails = ({
   run_days,
 }: TrainSectionType) => {
   const navigation = useNavigation();
-  // const run_days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "sun"]
   
   const onFramePressablePress=()=>{
     navigation.navigate("CurrentTrip",{trainNo:trainNumber})

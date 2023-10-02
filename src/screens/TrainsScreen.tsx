@@ -23,21 +23,18 @@ const TrainsScreen = () => {
   const navigation = useNavigation();
   const [data,setData]=useState(undefined)
   const route =useRoute();
-
+  const [check,setCheck]=useState(false);
   const fatch1 =async()=>{
-  //   await fetch(`https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode=${route.params?.fromStation}&toStationCode=${route.params?.toStation}&dateOfJourney=2023-04-13`, options)
-  // .then(async response => setData(await response.json()))
-  // .then(response => console.log(response))
-  // .catch(error => Alert.alert(`Failed to sign up: ${error?.message}`));
-  console.log('jjjjj');
-  
+    await fetch(`https://irctc1.p.rapidapi.com/api/v2/trainBetweenStations?fromStationCode=${route.params?.fromStation}&toStationCode=${route.params?.toStation}`, options)
+  .then(async response => setData(await response.json()))
+  .then(response => {console.log(response);setCheck(true)})
+  .catch(error => {Alert.alert(`Failed to sign up: ${error?.message}`);setCheck(true)});
 }
 const fatch2 =async()=>{
     await fetch(`https://irctc1.p.rapidapi.com/api/v1/searchTrain?query=${route?.params?.trainNumber}`, options)
   .then(async response => setData(await response.json()))
-  .then(response => console.log(response))
-  .catch(error => Alert.alert(`Failed to sign up: ${error?.message}`));
-  console.log('kkkkk');
+  .then(response => {console.log(response);setCheck(true)})
+  .catch(error => {Alert.alert(`Failed to sign up: ${error?.message}`);setCheck(true)});
   }
   useEffect(()=>{
     if(!route?.params?.trainNumber)
@@ -46,7 +43,7 @@ const fatch2 =async()=>{
     fatch2()
   },[])
 
-  if(!data){
+  if(!check){
     return(
       <ActivityIndicator
     // color = '#eb9413'
@@ -57,10 +54,6 @@ const fatch2 =async()=>{
       height: 80}}/>
     )
   }
-
-  console.log(data)
-  // console.log(route.params?.fromStation)
-  // console.log(route.params?.toStation)
   return (
     <View style={[styles.searchTrainScreen, styles.frameInnerFlexBox]}>
       <PNRStatusContainer
@@ -69,6 +62,7 @@ const fatch2 =async()=>{
         topBarRight="-0.14%"
         topBarLeft="0.14%"
       />
+        {(!data?.data)&&<Text style={{fontSize:30,fontWeight:'bold',textAlign:'center',marginTop:'100%'}}>Not found</Text>}
         {!route?.params?.trainNumber?
           (<ScrollView style={{marginTop:60}}>
           {data?.data?.map((data: { train_number: string | undefined; from_sta: string | undefined; to_sta: string | undefined; train_name: string | undefined; run_days: any; })=>{return(
